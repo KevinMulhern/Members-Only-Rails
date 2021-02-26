@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+
+  def most_recent_posts
+    posts.order(created_at: :desc)
+  end
 end
