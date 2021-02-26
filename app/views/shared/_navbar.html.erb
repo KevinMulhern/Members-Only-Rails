@@ -1,0 +1,13 @@
+<nav class="bg-gray-800 mb-5">
+  <div class="mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <%= link_to root_path do %>
+        <h1 class="text-xl text-white font-bold">Members Only<h1>
+      <% end %>
+
+      <%= link_to user_path(current_user) do %>
+        <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+      <% end %>
+    </div>
+  </div>
+</nav>
