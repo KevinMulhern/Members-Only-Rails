@@ -2,11 +2,22 @@
   <div class="mx-auto px-2 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <%= link_to root_path do %>
-        <h1 class="text-xl text-white font-bold">Members Only<h1>
+        <h1 class="text-xl text-gray-300 font-bold">Members Only<h1>
       <% end %>
 
-      <%= link_to user_path(current_user) do %>
-        <img class="h-8 w-8 rounded-full" src=<%="https://picsum.photos/id/#{current_user.id}/500" %> alt="">
+      <% if user_signed_in? %>
+        <div class="ml-3 relative" data-controller="menu">
+          <img class="h-8 w-8 rounded-full cursor-pointer" src=<%="https://picsum.photos/id/#{current_user.id}/500" %> alt="profile picture" data-action="click->menu#toggle">
+
+          <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu" data-menu-target="toggleable">
+            <%= link_to "Your Profile", user_path(current_user), class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+
+          </div>
+        </div>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
       <% end %>
     </div>
   </div>
