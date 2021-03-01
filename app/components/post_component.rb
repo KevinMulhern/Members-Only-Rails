@@ -6,10 +6,14 @@ class PostComponent < ViewComponent::Base
   end
 
   def title
-    post.title.titleize
+    post.title.capitalize
   end
 
-  def creator
+  def creator_name
     post.user.name.titleize
+  end
+
+  def created_at
+    post.created_at.to_s(:optional_year)
   end
 end
