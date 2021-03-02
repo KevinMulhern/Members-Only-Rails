@@ -1,2 +1,2 @@
-web: bundle exec puma -C config/puma.rb -p 3000
-webpack: bin/webpack-dev-server
+release: bin/heroku_release
+web: bundle exec puma -C config/puma.rb
